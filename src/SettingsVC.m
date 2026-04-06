@@ -1108,6 +1108,16 @@ extern NSString *lcAppUrlScheme;
 				[Utils showNotice:self title:@"Original Binary restored!"];
 			}
 		} custom:nil],
+		[Setting simpleCreate:@"Export Binary".loc type:SettingTypeButton action:^{
+			UIActivityViewController* activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[ [bundlePath URLByAppendingPathComponent:@"GeometryJump"] ] applicationActivities:nil];
+			// not sure if this is even necessary because ive never seen anyone complain about app logs
+			if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+				activityViewController.popoverPresentationController.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds), 0, 0);
+				activityViewController.popoverPresentationController.permittedArrowDirections = 0;
+			}
+			activityViewController.popoverPresentationController.sourceView = self.view;
+			[self presentViewController:activityViewController animated:YES completion:nil];
+		} custom:nil],
 		[Setting simpleCreate:@"Clear App Logs".loc type:SettingTypeButton action:^{
 			// Clear App Log
 			[LogUtils clearLogs:YES];
