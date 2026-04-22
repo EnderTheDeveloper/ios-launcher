@@ -587,7 +587,7 @@ extern NSString *lcAppUrlScheme;
 			}
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}],
-		[Setting create:@"Enable 120hz (Experimental)".loc type:SettingTypeToggle disabled:^BOOL() {
+		[Setting create:@"Enable 120hz (Experimental)".loc type:SettingTypeToggle enabled:^BOOL() {
 			//return ![Utils isSandboxed] || [[Utils getPrefs] integerForKey:@"ENTERPRISE_MODE"];
 			//return ![Utils isSandboxed] || ![Utils isDevCert];
 			return YES;
